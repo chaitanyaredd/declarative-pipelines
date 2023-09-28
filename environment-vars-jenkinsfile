@@ -1,0 +1,14 @@
+pipeline {
+	agent any
+	environment {
+		NAME = "Chaitanya"
+		COUNTRY = "India"
+	}
+	stages {
+		stage('Env variables') {
+			steps {
+				sh 'echo $NAME $COUNTRY '
+			}
+		}
+	}
+}
