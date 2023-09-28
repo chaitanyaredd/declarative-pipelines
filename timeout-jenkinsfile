@@ -1,0 +1,16 @@
+pipeline {
+	agent any
+	stages {
+		stage('Timeout'){
+			steps {
+				retry(3){
+					sh 'echo "retriggering the command"'
+				}
+				
+				timeout(time: 30, unit: 'SECONDS') {
+					sh 'sleep 60'
+				}
+			}
+		}
+	}
+}
