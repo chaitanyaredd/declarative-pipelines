@@ -1,0 +1,31 @@
+pipeline {
+	agent any
+	environment {
+		NAME = "Chaitanya"
+		COUNTRY = "India"
+	}
+	stages {
+		stage('Env variables') {
+			steps {
+				sh 'echo $NAME $COUNTRY '
+			}
+		}
+	}
+	
+	post {
+		success {
+			echo "This will executed when job is success"
+		}
+		
+		failure {
+			echo "This will executed when job is failed"
+		}
+		unstable {
+			echo "This will executed when job is unstable"
+		}
+		always {
+			echo "This will executed irrespective of job status"
+		}
+	
+	}
+}
